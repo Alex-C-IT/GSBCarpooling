@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{100AAE9A-A452-4310-8643-BE1CCFDF8594}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GSBCarpooling</RootNamespace>
+    <AssemblyName>GSBCarpooling</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache.cs" />
+    <Compile Include="Entities\Carburant.cs" />
+    <Compile Include="Entities\Etape.cs" />
+    <Compile Include="Entities\Trajet.cs" />
+    <Compile Include="Entities\TypeVehicule.cs" />
+    <Compile Include="Entities\Pays.cs" />
+    <Compile Include="Entities\Vehicule.cs" />
+    <Compile Include="Entities\Ville.cs" />
+    <Compile Include="Entities\Utilisateur.cs" />
+    <Compile Include="FEN_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_Admin.Designer.cs">
+      <DependentUpon>FEN_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_APropos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_APropos.Designer.cs">
+      <DependentUpon>FEN_APropos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_Car.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_Car.Designer.cs">
+      <DependentUpon>FEN_Car.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_GestionCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_GestionCars.Designer.cs">
+      <DependentUpon>FEN_GestionCars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_GestionTrajets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_GestionTrajets.Designer.cs">
+      <DependentUpon>FEN_GestionTrajets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_GestionUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_GestionUsers.Designer.cs">
+      <DependentUpon>FEN_GestionUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_ProposerTrajet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_ProposerTrajet.Designer.cs">
+      <DependentUpon>FEN_ProposerTrajet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_RechercherTrajet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_RechercherTrajet.Designer.cs">
+      <DependentUpon>FEN_RechercherTrajet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_User.Designer.cs">
+      <DependentUpon>FEN_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_VosTrajets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_VosTrajets.Designer.cs">
+      <DependentUpon>FEN_VosTrajets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEN_PremiereConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_PremiereConnexion.Designer.cs">
+      <DependentUpon>FEN_PremiereConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gsbcarpoolingDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gsbcarpoolingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Repositoies\TrajetRepository.cs" />
+    <Compile Include="Repositoies\VehiculeRepository.cs" />
+    <Compile Include="Repositoies\UtilisateurRepository.cs" />
+    <Compile Include="Security.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="FEN_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_Home.Designer.cs">
+      <DependentUpon>FEN_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="FEN_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_Login.Designer.cs">
+      <DependentUpon>FEN_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FEN_Admin.resx">
+      <DependentUpon>FEN_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_Car.resx">
+      <DependentUpon>FEN_Car.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_GestionCars.resx">
+      <DependentUpon>FEN_GestionCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_GestionTrajets.resx">
+      <DependentUpon>FEN_GestionTrajets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_GestionUsers.resx">
+      <DependentUpon>FEN_GestionUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_Login.resx">
+      <DependentUpon>FEN_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_Home.resx">
+      <DependentUpon>FEN_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_APropos.resx">
+      <DependentUpon>FEN_APropos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_ProposerTrajet.resx">
+      <DependentUpon>FEN_ProposerTrajet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_RechercherTrajet.resx">
+      <DependentUpon>FEN_RechercherTrajet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_User.resx">
+      <DependentUpon>FEN_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_VosTrajets.resx">
+      <DependentUpon>FEN_VosTrajets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_PremiereConnexion.resx">
+      <DependentUpon>FEN_PremiereConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="gsbcarpoolingDataSet.xsc">
+      <DependentUpon>gsbcarpoolingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="gsbcarpoolingDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>gsbcarpoolingDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="gsbcarpoolingDataSet.xss">
+      <DependentUpon>gsbcarpoolingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\en-voiture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\en-voiture_mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khan_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipart1230792.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipart12307921.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipart12307922.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualiser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GSB_Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GSB_Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vehicule1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trajet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trajet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quitter1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vos trajets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VosTrajets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RechercherTrajets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proposer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proposer_petit.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
