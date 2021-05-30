@@ -53,16 +53,7 @@ namespace GSBCarpooling
                     L_TypeUser.Visible = false;
                     BTN_Valider.Visible = false;
                 }
-
-                L_Password.Visible = false;
-                L_Password2.Visible = false;
-                SAI_Password.Visible = false;
-                SAI_Password2.Visible = false;
             }
-
-            //Champs MDP
-            SAI_Password.UseSystemPasswordChar = true;
-            SAI_Password2.UseSystemPasswordChar = true;
 
             // Combo sexe
             CBX_Sexe.Items.Add("Homme");
@@ -101,15 +92,10 @@ namespace GSBCarpooling
             string mobile = SAI_Mobile.Text;
             string typeUser = CBX_TypeUser.Text;
 
-            if(SAI_Password.Text != SAI_Password2.Text) {
-                MessageBox.Show("Les mots de passe ne sont pas identiques...");
-                return;
-            }
-            string password = Security.Sha256Hash(SAI_Password.Text.ToString());
 
             if(this.mode == modeOuverture.CREATION) {
                 // Initialisation de l'utilisateur
-                Utilisateur user = new Utilisateur(0, nom, prenom, pseudo, dateDeNaissance, adresse, ville, codePostal, mail, mobile, sexe, DateTime.Today, typeUser, false, password);
+                Utilisateur user = new Utilisateur(0, nom, prenom, pseudo, dateDeNaissance, adresse, ville, codePostal, mail, mobile, sexe, DateTime.Today, typeUser, false);
 
                 // Ajout de l'utilisateur 
                 if (user.ajouterUtilisateur() != true) {
@@ -175,6 +161,12 @@ namespace GSBCarpooling
             CBX_TypeUser.Text = (string)dataRecord[11];
 
             data.Close();
+        }
+
+        private void BTN_ChangerMdp_Click(object sender, EventArgs e)
+        {
+            Form changerMdp = new FEN_ChangerMotDePasse();
+            changerMdp.ShowDialog();
         }
     }
 }

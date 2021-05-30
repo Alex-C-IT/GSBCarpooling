@@ -36,10 +36,6 @@
             this.L_Prenom = new System.Windows.Forms.Label();
             this.SAI_Pseudonyme = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.SAI_Password = new System.Windows.Forms.TextBox();
-            this.L_Password = new System.Windows.Forms.Label();
-            this.SAI_Password2 = new System.Windows.Forms.TextBox();
-            this.L_Password2 = new System.Windows.Forms.Label();
             this.DATE_DateNaissance = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,6 +54,7 @@
             this.SAI_Mail = new System.Windows.Forms.TextBox();
             this.CBX_Pays = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.BTN_ChangerMdp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BTN_Valider
@@ -129,38 +126,6 @@
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Pseudonyme";
-            // 
-            // SAI_Password
-            // 
-            this.SAI_Password.Location = new System.Drawing.Point(281, 31);
-            this.SAI_Password.Name = "SAI_Password";
-            this.SAI_Password.Size = new System.Drawing.Size(162, 20);
-            this.SAI_Password.TabIndex = 9;
-            // 
-            // L_Password
-            // 
-            this.L_Password.AutoSize = true;
-            this.L_Password.Location = new System.Drawing.Point(278, 15);
-            this.L_Password.Name = "L_Password";
-            this.L_Password.Size = new System.Drawing.Size(71, 13);
-            this.L_Password.TabIndex = 8;
-            this.L_Password.Text = "Mot de passe";
-            // 
-            // SAI_Password2
-            // 
-            this.SAI_Password2.Location = new System.Drawing.Point(281, 70);
-            this.SAI_Password2.Name = "SAI_Password2";
-            this.SAI_Password2.Size = new System.Drawing.Size(162, 20);
-            this.SAI_Password2.TabIndex = 11;
-            // 
-            // L_Password2
-            // 
-            this.L_Password2.AutoSize = true;
-            this.L_Password2.Location = new System.Drawing.Point(278, 54);
-            this.L_Password2.Name = "L_Password2";
-            this.L_Password2.Size = new System.Drawing.Size(117, 13);
-            this.L_Password2.TabIndex = 10;
-            this.L_Password2.Text = "Confirmer mot de passe";
             // 
             // DATE_DateNaissance
             // 
@@ -263,7 +228,7 @@
             // 
             // SAI_Mobile
             // 
-            this.SAI_Mobile.Location = new System.Drawing.Point(244, 179);
+            this.SAI_Mobile.Location = new System.Drawing.Point(245, 163);
             this.SAI_Mobile.Name = "SAI_Mobile";
             this.SAI_Mobile.Size = new System.Drawing.Size(196, 20);
             this.SAI_Mobile.TabIndex = 27;
@@ -271,7 +236,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(241, 161);
+            this.label9.Location = new System.Drawing.Point(242, 145);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(127, 13);
             this.label9.TabIndex = 26;
@@ -280,7 +245,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(240, 119);
+            this.label11.Location = new System.Drawing.Point(241, 103);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 25;
@@ -288,7 +253,7 @@
             // 
             // SAI_Mail
             // 
-            this.SAI_Mail.Location = new System.Drawing.Point(243, 135);
+            this.SAI_Mail.Location = new System.Drawing.Point(244, 119);
             this.SAI_Mail.Name = "SAI_Mail";
             this.SAI_Mail.Size = new System.Drawing.Size(196, 20);
             this.SAI_Mail.TabIndex = 28;
@@ -310,11 +275,23 @@
             this.label12.TabIndex = 29;
             this.label12.Text = "Pays";
             // 
+            // BTN_ChangerMdp
+            // 
+            this.BTN_ChangerMdp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BTN_ChangerMdp.Location = new System.Drawing.Point(245, 43);
+            this.BTN_ChangerMdp.Name = "BTN_ChangerMdp";
+            this.BTN_ChangerMdp.Size = new System.Drawing.Size(195, 23);
+            this.BTN_ChangerMdp.TabIndex = 31;
+            this.BTN_ChangerMdp.Text = "Changer de mot de passe";
+            this.BTN_ChangerMdp.UseVisualStyleBackColor = true;
+            this.BTN_ChangerMdp.Click += new System.EventHandler(this.BTN_ChangerMdp_Click);
+            // 
             // FEN_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 450);
+            this.Controls.Add(this.BTN_ChangerMdp);
             this.Controls.Add(this.CBX_Pays);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.SAI_Mail);
@@ -333,10 +310,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DATE_DateNaissance);
-            this.Controls.Add(this.SAI_Password2);
-            this.Controls.Add(this.L_Password2);
-            this.Controls.Add(this.SAI_Password);
-            this.Controls.Add(this.L_Password);
             this.Controls.Add(this.SAI_Pseudonyme);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SAI_Prenom);
@@ -364,10 +337,6 @@
         private System.Windows.Forms.Label L_Prenom;
         private System.Windows.Forms.TextBox SAI_Pseudonyme;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox SAI_Password;
-        private System.Windows.Forms.Label L_Password;
-        private System.Windows.Forms.TextBox SAI_Password2;
-        private System.Windows.Forms.Label L_Password2;
         private System.Windows.Forms.DateTimePicker DATE_DateNaissance;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -386,5 +355,6 @@
         private System.Windows.Forms.TextBox SAI_Mail;
         private System.Windows.Forms.ComboBox CBX_Pays;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button BTN_ChangerMdp;
     }
 }

@@ -73,5 +73,24 @@ namespace GSBCarpooling.Repositoies
             else
                 return false;
         }
+
+        public bool changerMotDePasse(Utilisateur user)
+        {
+            string rSQL =
+                "UPDATE UTILISATEUR " +
+                "SET Utilisateur_HashPassword = '" + user.getHashpassword() + "' " +
+                "WHERE Utilisateur_Id = " + user.getId();
+
+            SqlCommand modifierMdp = new SqlCommand(rSQL, Global.dataBase);
+
+            int result = modifierMdp.ExecuteNonQuery();
+
+            modifierMdp.Cancel();
+
+            if (result >= 1)
+                return true;
+            else
+                return false;
+        }
     }
 }

@@ -73,6 +73,12 @@
     <Compile Include="FEN_Car.Designer.cs">
       <DependentUpon>FEN_Car.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEN_ChangerMotDePasse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_ChangerMotDePasse.Designer.cs">
+      <DependentUpon>FEN_ChangerMotDePasse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FEN_GestionCars.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FEN_Car.resx">
       <DependentUpon>FEN_Car.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_ChangerMotDePasse.resx">
+      <DependentUpon>FEN_ChangerMotDePasse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FEN_GestionCars.resx">
       <DependentUpon>FEN_GestionCars.cs</DependentUpon>

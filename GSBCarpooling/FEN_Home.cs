@@ -46,40 +46,7 @@ namespace GSBCarpooling
             this.remplirTableReservation();
 
             // Recherche des demandes de réservation
-            string rSQL = 
-            "SELECT COUNT(Trajet_Id) " +
-            "FROM RESERVER " +
-            "WHERE Trajet_Id IN ( " +
-                "SELECT Trajet_Id " +
-                "FROM TRAJET " +
-                "WHERE Utilisateur_Id = " + Global.user.getId() +
-             ") " + 
-             "AND accepte IS NULL";
-
-            SqlCommand cmd = new SqlCommand(rSQL, Global.dataBase);
-            SqlDataReader data = cmd.ExecuteReader();
-
-            // Si pas de trajets réservés...
-            if (!data.HasRows) {
-                // Cache le bouton de réservation
-                L_CompteurReservations.Visible = false;
-                // Ferme la commande et la requête à la base 
-                data.Close();
-                cmd.Cancel();
-            }
-            data.Read();
-            var dataRecord = (IDataRecord)data;
-            int count = (int)dataRecord[0];
-            L_CompteurReservations.Text = count.ToString();
-            if (count != 0)
-            {
-                L_CompteurReservations.ForeColor = Color.Red;
-                MessageBox.Show(String.Format("Vous avez {0} demande{1} de réservation en attente", count, (count > 1) ? "s" : ""));
-            }
-
-          
-            data.Close();
-            cmd.Cancel();
+            this.rechercheDemandeReservation();
 
         }
 
@@ -179,9 +146,7 @@ namespace GSBCarpooling
                 // Cache le bouton de réservation
                 BTN_AnnulerReservation.Visible = false;
                 // Ferme la commande et la requête à la base 
-                data.Close();
-                cmd.Cancel();
-
+                this.fermetureRequete(cmd, data);
                 return;
             }
 
@@ -194,8 +159,49 @@ namespace GSBCarpooling
             }
 
             // Ferme la commande et la requête à la base 
-            data.Close();
+            this.fermetureRequete(cmd, data);
+        }
+
+        private void rechercheDemandeReservation()
+        {
+            string rSQL =
+            "SELECT COUNT(Trajet_Id) " +
+            "FROM RESERVER " +
+            "WHERE Trajet_Id IN ( " +
+                "SELECT Trajet_Id " +
+                "FROM TRAJET " +
+                "WHERE Utilisateur_Id = " + Global.user.getId() +
+             ") " +
+             "AND accepte IS NULL";
+
+            SqlCommand cmd = new SqlCommand(rSQL, Global.dataBase);
+            SqlDataReader data = cmd.ExecuteReader();
+
+            // Si pas de trajets réservés...
+            if (!data.HasRows)
+            {
+                // Cache le bouton de réservation
+                L_CompteurReservations.Visible = false;
+                // Ferme la commande et la requête à la base 
+                this.fermetureRequete(cmd, data);
+            }
+            data.Read();
+            var dataRecord = (IDataRecord)data;
+            int count = (int)dataRecord[0];
+            L_CompteurReservations.Text = count.ToString();
+            if (count != 0)
+            {
+                L_CompteurReservations.ForeColor = Color.Red;
+                MessageBox.Show(String.Format("Vous avez {0} demande{1} de réservation en attente", count, (count > 1) ? "s" : ""));
+            }
+
+            this.fermetureRequete(cmd, data);
+        }
+
+        private void fermetureRequete(SqlCommand cmd, SqlDataReader data)
+        {
             cmd.Cancel();
+            data.Close();
         }
     }
 }

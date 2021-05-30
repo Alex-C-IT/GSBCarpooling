@@ -125,6 +125,11 @@ namespace GSBCarpooling
         {
             return this.hashPassword;
         }
+        public void setHashpassword(string hashPassword)
+        {
+            this.hashPassword = hashPassword;
+        }
+
         public bool getPremiereConnexion()
         {
             return this.premiereConnexion;
@@ -163,6 +168,12 @@ namespace GSBCarpooling
         {
             // Désactivation de l'utilisateur
             return (new UtilisateurRepository()).disable(this.getId());
+        }
+
+        public bool changerMotDePasse()
+        {
+            // Changer mot de passe utilisateur
+            return (new UtilisateurRepository()).changerMotDePasse(this);
         }
     }
 }
