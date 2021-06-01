@@ -92,6 +92,7 @@ namespace GSBCarpooling
         {
             Form vosTrajets = new FEN_VosTrajets();
             vosTrajets.ShowDialog();
+            this.rechercheDemandeReservation(true);
         }
 
         private void BTN_RechercherTrajet_Click(object sender, EventArgs e)
@@ -132,7 +133,7 @@ namespace GSBCarpooling
             // Nettoyage de la table
             TABLE_TrajetsReserves.Rows.Clear();
             // Remplissage de la table des réservations
-            string rSQL = "SELECT R.Trajet_Id, Trajet_Date, Trajet_HeureDepart, Ville_Depart " +
+            string rSQL = "SELECT R.Trajet_Id, Trajet_Date, Trajet_HeureDepart, Ville_Depart, accepte " +
             "FROM RESERVER R " +
             "JOIN TRAJET T ON T.Trajet_Id = R.Trajet_Id " +
             "WHERE R.Utilisateur_Id = " + Global.user.getId();
@@ -152,17 +153,37 @@ namespace GSBCarpooling
 
             BTN_AnnulerReservation.Visible = true;
             // Remplissage de la table
+            int nbLignes = 0;
             while (data.Read())
             {
                 var dataRecord = (IDataRecord)data;
                 TABLE_TrajetsReserves.Rows.Add((int)dataRecord[0], (string)dataRecord[1].ToString(), (string)dataRecord[2].ToString(), (string)dataRecord[3]);
+
+                // Coloration de la ligne en fonction de l'état de la réservation (acceptée, refusée, en attente)
+                var reserve = dataRecord[4];
+                if (Convert.IsDBNull(reserve)) reserve = null;
+
+                switch (reserve)
+                {
+                    case true:
+                        TABLE_TrajetsReserves.Rows[nbLignes].DefaultCellStyle.BackColor = Color.LightGreen;
+                        break;
+                    case false:
+                        TABLE_TrajetsReserves.Rows[nbLignes].DefaultCellStyle.BackColor = Color.IndianRed;
+                        break;
+                    default:
+                        TABLE_TrajetsReserves.Rows[nbLignes].DefaultCellStyle.BackColor = Color.Orange;
+                        break;
+                }
+
+                nbLignes++;
             }
 
             // Ferme la commande et la requête à la base 
             this.fermetureRequete(cmd, data);
         }
 
-        private void rechercheDemandeReservation()
+        private void rechercheDemandeReservation(bool actualiser = false)
         {
             string rSQL =
             "SELECT COUNT(Trajet_Id) " +
@@ -189,7 +210,7 @@ namespace GSBCarpooling
             var dataRecord = (IDataRecord)data;
             int count = (int)dataRecord[0];
             L_CompteurReservations.Text = count.ToString();
-            if (count != 0)
+            if (count != 0 && !actualiser)
             {
                 L_CompteurReservations.ForeColor = Color.Red;
                 MessageBox.Show(String.Format("Vous avez {0} demande{1} de réservation en attente", count, (count > 1) ? "s" : ""));

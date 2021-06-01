@@ -14,9 +14,18 @@ namespace GSBCarpooling.Repositoies
         {
             string rSQL =
                 "INSERT INTO VEHICULE(Vehicule_Marque, Vehicule_Modele, Vehicule_Annee, Vehicule_Couleur, Vehicule_NbPlaces, Vehicule_societe, Vehicule_immatriculation, Carburant_Id, Utilisateur_Id, TypeVehicule_Id, Vehicule_Actif) " +
-                "VALUES ('" + vehicule.getMarque() + "', '" + vehicule.getModele() + "', '" + vehicule.getAnnee() + "', '" + vehicule.getCouleur() + "', '" + vehicule.getNbPlaces() + "', '" + vehicule.getSociete() + "', '" + vehicule.getImmatriculation() + "', '" + vehicule.getCarburant() + "', '" + vehicule.getUtilisateur() + "', '" + vehicule.getTypeVehicule() + "', 1)";
+                "VALUES ('@marque', '@modele', '@annee', '@couleur', '@nbPlaces', '" + vehicule.getSociete() + "', '@immatriculation', '@carburant', '@utilisateur', '" + vehicule.getTypeVehicule() + "', 1)";
 
             SqlCommand ajoutCar = new SqlCommand(rSQL, Global.dataBase);
+            ajoutCar.CommandText = rSQL;
+            ajoutCar.Parameters.AddWithValue("@marque", vehicule.getMarque());
+            ajoutCar.Parameters.AddWithValue("@modele", vehicule.getModele());
+            ajoutCar.Parameters.AddWithValue("@annee", vehicule.getAnnee());
+            ajoutCar.Parameters.AddWithValue("@couleur", vehicule.getCouleur());
+            ajoutCar.Parameters.AddWithValue("@nbPlaces", vehicule.getNbPlaces());
+            ajoutCar.Parameters.AddWithValue("@immatriculation", vehicule.getImmatriculation());
+            ajoutCar.Parameters.AddWithValue("@carburant", vehicule.getCarburant());
+            ajoutCar.Parameters.AddWithValue("@utilisateur", vehicule.getUtilisateur());
 
             int result = ajoutCar.ExecuteNonQuery();
 
@@ -32,20 +41,28 @@ namespace GSBCarpooling.Repositoies
         {
             string rSQL =
                 "UPDATE VEHICULE " +
-                "SET Vehicule_Marque = '" + car.getMarque() + "', " +
-                "Vehicule_Modele = '" + car.getModele() + "', " +
-                "Vehicule_Annee = '" + car.getAnnee() + "', " +
-                "Vehicule_Couleur = '" + car.getCouleur() + "', " +
-                "Vehicule_NbPlaces = '" + car.getNbPlaces() + "', " +
+                "SET Vehicule_Marque = '@marque', " +
+                "Vehicule_Modele = '@modele', " +
+                "Vehicule_Annee = '@annee', " +
+                "Vehicule_Couleur = '@couleur', " +
+                "Vehicule_NbPlaces = '@nbPlaces', " +
                 "Vehicule_societe = '" + car.getSociete() + "', " +
-                "Vehicule_immatriculation = '" + car.getImmatriculation() + "', " +
-                "Carburant_Id = '" + car.getCarburant() + "', " +
-                "Utilisateur_Id = '" + car.getUtilisateur() + "', " +
+                "Vehicule_immatriculation = '@immatriculation', " +
+                "Carburant_Id = '@carburant', " +
+                "Utilisateur_Id = '@utilisateur', " +
                 "TypeVehicule_Id = '" + car.getTypeVehicule() + "' " +
                 "WHERE Vehicule_Id = " + car.getId();
 
             SqlCommand modifierCar = new SqlCommand(rSQL, Global.dataBase);
-
+            modifierCar.CommandText = rSQL;
+            modifierCar.Parameters.AddWithValue("@marque", car.getMarque());
+            modifierCar.Parameters.AddWithValue("@modele", car.getModele());
+            modifierCar.Parameters.AddWithValue("@annee", car.getAnnee());
+            modifierCar.Parameters.AddWithValue("@couleur", car.getCouleur());
+            modifierCar.Parameters.AddWithValue("@nbPlaces", car.getNbPlaces());
+            modifierCar.Parameters.AddWithValue("@immatriculation", car.getImmatriculation());
+            modifierCar.Parameters.AddWithValue("@carburant", car.getCarburant());
+            modifierCar.Parameters.AddWithValue("@utilisateur", car.getUtilisateur());
             int result = modifierCar.ExecuteNonQuery();
 
             modifierCar.Cancel();

@@ -65,3 +65,4 @@ C:\Users\Alexandre\Documents\GitHub\GSBCarpooling\GSBCarpooling\obj\Debug\GSBCar
 C:\Users\Alexandre\Documents\GitHub\GSBCarpooling\GSBCarpooling\obj\Debug\GSBCarpooling.exe
 C:\Users\Alexandre\Documents\GitHub\GSBCarpooling\GSBCarpooling\obj\Debug\GSBCarpooling.pdb
 C:\Users\Alexandre\Documents\GitHub\GSBCarpooling\GSBCarpooling\obj\Debug\GSBCarpooling.FEN_ChangerMotDePasse.resources
+C:\Users\Alexandre\Documents\GitHub\GSBCarpooling\GSBCarpooling\obj\Debug\GSBCarpooling.FEN_Trajet.resources

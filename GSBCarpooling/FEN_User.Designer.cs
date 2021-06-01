@@ -55,6 +55,10 @@
             this.CBX_Pays = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.BTN_ChangerMdp = new System.Windows.Forms.Button();
+            this.SAI_Mdp = new System.Windows.Forms.TextBox();
+            this.SAI_ConfirmMdp = new System.Windows.Forms.TextBox();
+            this.L_ConfirmerMdp = new System.Windows.Forms.Label();
+            this.L_Mdp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BTN_Valider
@@ -286,11 +290,47 @@
             this.BTN_ChangerMdp.UseVisualStyleBackColor = true;
             this.BTN_ChangerMdp.Click += new System.EventHandler(this.BTN_ChangerMdp_Click);
             // 
+            // SAI_Mdp
+            // 
+            this.SAI_Mdp.Location = new System.Drawing.Point(245, 202);
+            this.SAI_Mdp.Name = "SAI_Mdp";
+            this.SAI_Mdp.Size = new System.Drawing.Size(196, 20);
+            this.SAI_Mdp.TabIndex = 35;
+            // 
+            // SAI_ConfirmMdp
+            // 
+            this.SAI_ConfirmMdp.Location = new System.Drawing.Point(243, 241);
+            this.SAI_ConfirmMdp.Name = "SAI_ConfirmMdp";
+            this.SAI_ConfirmMdp.Size = new System.Drawing.Size(196, 20);
+            this.SAI_ConfirmMdp.TabIndex = 34;
+            // 
+            // L_ConfirmerMdp
+            // 
+            this.L_ConfirmerMdp.AutoSize = true;
+            this.L_ConfirmerMdp.Location = new System.Drawing.Point(243, 225);
+            this.L_ConfirmerMdp.Name = "L_ConfirmerMdp";
+            this.L_ConfirmerMdp.Size = new System.Drawing.Size(117, 13);
+            this.L_ConfirmerMdp.TabIndex = 33;
+            this.L_ConfirmerMdp.Text = "Confirmer mot de passe";
+            // 
+            // L_Mdp
+            // 
+            this.L_Mdp.AutoSize = true;
+            this.L_Mdp.Location = new System.Drawing.Point(242, 186);
+            this.L_Mdp.Name = "L_Mdp";
+            this.L_Mdp.Size = new System.Drawing.Size(71, 13);
+            this.L_Mdp.TabIndex = 32;
+            this.L_Mdp.Text = "Mot de passe";
+            // 
             // FEN_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 450);
+            this.Controls.Add(this.SAI_Mdp);
+            this.Controls.Add(this.SAI_ConfirmMdp);
+            this.Controls.Add(this.L_ConfirmerMdp);
+            this.Controls.Add(this.L_Mdp);
             this.Controls.Add(this.BTN_ChangerMdp);
             this.Controls.Add(this.CBX_Pays);
             this.Controls.Add(this.label12);
@@ -356,5 +396,9 @@
         private System.Windows.Forms.ComboBox CBX_Pays;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button BTN_ChangerMdp;
+        private System.Windows.Forms.TextBox SAI_Mdp;
+        private System.Windows.Forms.TextBox SAI_ConfirmMdp;
+        private System.Windows.Forms.Label L_ConfirmerMdp;
+        private System.Windows.Forms.Label L_Mdp;
     }
 }

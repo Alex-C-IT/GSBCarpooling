@@ -28,10 +28,21 @@ namespace GSBCarpooling
 
         private void FEN_User_Load(object sender, EventArgs e)
         {
+            BTN_ChangerMdp.Visible = false;
+
             // Si mode ouverture = MODIFICATION 
             if(mode == modeOuverture.MODIFICATION) {
 
                 this.Text = "Modification d'un utilisateur";
+
+                // Cacher champs mot de passe 
+                L_Mdp.Visible = false;
+                SAI_Mdp.Visible = false;
+                L_ConfirmerMdp.Visible = false;
+                SAI_ConfirmMdp.Visible = false;
+
+                BTN_ChangerMdp.Visible = true;
+
                 this.chargerChamps();
 
                 if (Global.user.getTypeUtilisateur() != "ADMIN")
@@ -94,8 +105,16 @@ namespace GSBCarpooling
 
 
             if(this.mode == modeOuverture.CREATION) {
+
+                // Vérifie que les mots de passe soient identiques
+                if(SAI_Mdp.Text != SAI_ConfirmMdp.Text) {
+                    MessageBox.Show("Les mots de passe ne sont pas identiques. Veuillez réessayer.");
+                    return;
+                }
+                string password = Security.Sha256Hash(SAI_Mdp.Text);
+
                 // Initialisation de l'utilisateur
-                Utilisateur user = new Utilisateur(0, nom, prenom, pseudo, dateDeNaissance, adresse, ville, codePostal, mail, mobile, sexe, DateTime.Today, typeUser, false);
+                Utilisateur user = new Utilisateur(0, nom, prenom, pseudo, dateDeNaissance, adresse, ville, codePostal, mail, mobile, sexe, DateTime.Today, typeUser, false, password);
 
                 // Ajout de l'utilisateur 
                 if (user.ajouterUtilisateur() != true) {

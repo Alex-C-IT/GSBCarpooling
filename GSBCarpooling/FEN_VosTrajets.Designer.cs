@@ -36,6 +36,7 @@
             this.villeArrivée = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BTN_Supprimer = new System.Windows.Forms.Button();
             this.BTN_Modifier = new System.Windows.Forms.Button();
+            this.BTN_Fermer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TABLE_VosTrajets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.TABLE_VosTrajets.Name = "TABLE_VosTrajets";
             this.TABLE_VosTrajets.Size = new System.Drawing.Size(491, 255);
             this.TABLE_VosTrajets.TabIndex = 0;
+            this.TABLE_VosTrajets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TABLE_VosTrajets_CellContentClick);
             // 
             // id
             // 
@@ -90,9 +92,9 @@
             // BTN_Supprimer
             // 
             this.BTN_Supprimer.Image = global::GSBCarpooling.Properties.Resources.delete;
-            this.BTN_Supprimer.Location = new System.Drawing.Point(254, 264);
+            this.BTN_Supprimer.Location = new System.Drawing.Point(87, 264);
             this.BTN_Supprimer.Name = "BTN_Supprimer";
-            this.BTN_Supprimer.Size = new System.Drawing.Size(241, 61);
+            this.BTN_Supprimer.Size = new System.Drawing.Size(82, 41);
             this.BTN_Supprimer.TabIndex = 22;
             this.BTN_Supprimer.UseVisualStyleBackColor = true;
             this.BTN_Supprimer.Click += new System.EventHandler(this.BTN_Supprimer_Click);
@@ -100,18 +102,29 @@
             // BTN_Modifier
             // 
             this.BTN_Modifier.Image = global::GSBCarpooling.Properties.Resources.clipart12307922;
-            this.BTN_Modifier.Location = new System.Drawing.Point(2, 264);
+            this.BTN_Modifier.Location = new System.Drawing.Point(5, 264);
             this.BTN_Modifier.Name = "BTN_Modifier";
-            this.BTN_Modifier.Size = new System.Drawing.Size(241, 61);
+            this.BTN_Modifier.Size = new System.Drawing.Size(76, 41);
             this.BTN_Modifier.TabIndex = 21;
             this.BTN_Modifier.UseVisualStyleBackColor = true;
             this.BTN_Modifier.Click += new System.EventHandler(this.BTN_Modifier_Click);
+            // 
+            // BTN_Fermer
+            // 
+            this.BTN_Fermer.Location = new System.Drawing.Point(418, 282);
+            this.BTN_Fermer.Name = "BTN_Fermer";
+            this.BTN_Fermer.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Fermer.TabIndex = 23;
+            this.BTN_Fermer.Text = "Fermer";
+            this.BTN_Fermer.UseVisualStyleBackColor = true;
+            this.BTN_Fermer.Click += new System.EventHandler(this.BTN_Fermer_Click);
             // 
             // FEN_VosTrajets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 329);
+            this.ClientSize = new System.Drawing.Size(496, 307);
+            this.Controls.Add(this.BTN_Fermer);
             this.Controls.Add(this.BTN_Supprimer);
             this.Controls.Add(this.BTN_Modifier);
             this.Controls.Add(this.TABLE_VosTrajets);
@@ -134,5 +147,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn villeArrivée;
         private System.Windows.Forms.Button BTN_Supprimer;
         private System.Windows.Forms.Button BTN_Modifier;
+        private System.Windows.Forms.Button BTN_Fermer;
     }
 }

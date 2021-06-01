@@ -109,6 +109,12 @@
     <Compile Include="FEN_RechercherTrajet.Designer.cs">
       <DependentUpon>FEN_RechercherTrajet.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEN_Trajet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEN_Trajet.Designer.cs">
+      <DependentUpon>FEN_Trajet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FEN_User.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FEN_RechercherTrajet.resx">
       <DependentUpon>FEN_RechercherTrajet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEN_Trajet.resx">
+      <DependentUpon>FEN_Trajet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FEN_User.resx">
       <DependentUpon>FEN_User.cs</DependentUpon>

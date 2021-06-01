@@ -193,7 +193,7 @@ namespace GSBCarpooling
             string[] idVehicule = C_Vehicuke.Text.Split(' ');
             if (this.mode == modeOuverture.CREATION) {
                 try {
-                    this.trajet = new Trajet(0, dateTimePicker_DateDepart.Value, dateTimePicker_HeureDepart.Value, RTB_commentaire.Text, byte.Parse(numericUpDown_nbPassagers.Text), int.Parse(idVehicule[0]), Global.user.getId(), C_VilleDepart.Text);
+                    this.trajet = new Entities.Trajet(0, dateTimePicker_DateDepart.Value, dateTimePicker_HeureDepart.Value, RTB_commentaire.Text, byte.Parse(numericUpDown_nbPassagers.Text), int.Parse(idVehicule[0]), Global.user.getId(), C_VilleDepart.Text);
                 } catch (FormatException) { MessageBox.Show("Erreur de saisie. Veuillez recommencer"); return; }
                 // Ajout les étpaes au trajet
                 this.trajet.setListeEtapes(listeEtapes);
@@ -205,7 +205,7 @@ namespace GSBCarpooling
             } else {
                 // Ajout du trajet dans la base de données
                 try {
-                    this.trajet = new Trajet(this.trajet.getId(), dateTimePicker_DateDepart.Value, dateTimePicker_HeureDepart.Value, RTB_commentaire.Text, byte.Parse(numericUpDown_nbPassagers.Text), int.Parse(idVehicule[0]), Global.user.getId(), C_VilleDepart.Text);
+                    this.trajet = new Entities.Trajet(this.trajet.getId(), dateTimePicker_DateDepart.Value, dateTimePicker_HeureDepart.Value, RTB_commentaire.Text, byte.Parse(numericUpDown_nbPassagers.Text), int.Parse(idVehicule[0]), Global.user.getId(), C_VilleDepart.Text);
                 }
                 catch (FormatException) { MessageBox.Show("Erreur de saisie. Veuillez recommencer"); return; }
                 // Ajout les étpaes au trajet

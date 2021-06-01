@@ -27,6 +27,7 @@ namespace GSBCarpooling
         {
             TABLE_VosTrajets.Rows.Clear();
 
+            // Charge la liste des trajets de l'utilisateur
             string rSQL =
                 "SELECT T.Trajet_Id, Trajet_Date, Trajet_HeureDepart, Ville_Depart, MAX(ordre) " +
                 "FROM TRAJET T " +
@@ -38,16 +39,41 @@ namespace GSBCarpooling
 
             SqlCommand cmd = new SqlCommand(rSQL, Global.dataBase);
             SqlDataReader data = cmd.ExecuteReader();
+
+            while (data.Read())
+            {
+                var dataRecord = (IDataRecord)data;
+                TABLE_VosTrajets.Rows.Add((int)dataRecord[0], (string)dataRecord[1].ToString(), (string)dataRecord[2].ToString(), (string)dataRecord[3], (int)dataRecord[4]);
+            }
+            this.fermetureRequete(cmd, data);
+
+            // Recherche s'il existe une demande de réservation pour ce trajet
+            string rSqlReservation = "SELECT R.Trajet_Id, COUNT(R.Trajet_Id) " + 
+                "FROM RESERVER R " +
+                "JOIN TRAJET T ON T.Trajet_Id = R.Trajet_Id " +
+                "WHERE T.Utilisateur_Id = " + Global.user.getId() + " AND accepte IS NULL " + 
+                "GROUP BY R.Trajet_Id";
+
+            cmd = new SqlCommand(rSqlReservation, Global.dataBase);
+            data = cmd.ExecuteReader();
+
             while (data.Read())
             {
                 var dataRecord = (IDataRecord)data;
 
-                //rSQL = "Ville_Nom FROM ETAPE WHERE Trajet_Id = " + (int)dataRecord[0] + "AND ordre IN (" + (int)dataRecord[3] + ", " + (int)dataRecord[4] + ")";
+                int idTRajet = (int)dataRecord[0];
+                int count = (int)dataRecord[1];
 
-                TABLE_VosTrajets.Rows.Add((int)dataRecord[0], (string)dataRecord[1].ToString(), (string)dataRecord[2].ToString(), (string)dataRecord[3], (int)dataRecord[4]);
+                for (int i = 0; i < TABLE_VosTrajets.Rows.Count - 1; i++)
+                {
+                    if((int)TABLE_VosTrajets.Rows[i].Cells[0].Value == idTRajet && count != 0)
+                    {
+                        // S'il existe une demande de réservation en attente de réponse alors on affiche la ligne du trajet en orange
+                        TABLE_VosTrajets.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
+                    }
+                }
             }
-            data.Close();
-            cmd.Cancel();
+            this.fermetureRequete(cmd, data);
         }
 
         private void BTN_Supprimer_Click(object sender, EventArgs e)
@@ -64,13 +90,13 @@ namespace GSBCarpooling
 
             SqlCommand cmd = new SqlCommand(rSQL, Global.dataBase);
             int result = cmd.ExecuteNonQuery();
-            cmd.Cancel();
+            this.fermetureRequete(cmd);
 
             //Suppression du trajet
             rSQL = "DELETE FROM TRAJET WHERE Utilisateur_Id = " + Global.user.getId() + " AND Trajet_Id = " + id;
             cmd = new SqlCommand(rSQL, Global.dataBase);
             result = cmd.ExecuteNonQuery();
-            cmd.Cancel();
+            this.fermetureRequete(cmd);
 
             if (result >= 1)
             {
@@ -98,9 +124,7 @@ namespace GSBCarpooling
 
                     TABLE_VosTrajets.Rows.Add((int)dataRecord[0], (string)dataRecord[1].ToString(), (string)dataRecord[2].ToString(), (int)dataRecord[3], (int)dataRecord[4]);
                 }
-
-                data.Close();
-                cmd.Cancel();
+                this.fermetureRequete(cmd, data);
             }
             else
             {
@@ -123,6 +147,26 @@ namespace GSBCarpooling
             this.chargerTable();
 
         Sortir:;
+        }
+
+        private void BTN_Fermer_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void TABLE_VosTrajets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id;
+            id = (int)TABLE_VosTrajets.CurrentRow.Cells[0].Value;
+            Form trajet = new FEN_Trajet(id);
+            trajet.ShowDialog();
+            this.chargerTable();
+        }
+
+        private void fermetureRequete(SqlCommand cmd = null, SqlDataReader data = null)
+        {
+            if(data != null) data.Close();
+            if(cmd != null) cmd.Cancel();
         }
     }
 }

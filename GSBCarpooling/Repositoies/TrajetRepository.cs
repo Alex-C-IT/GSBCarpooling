@@ -11,18 +11,20 @@ namespace GSBCarpooling.Repositoies
 {
     class TrajetRepository
     {
-        new List<string> etapes = new List<string>();
+        List<string> etapes = new List<string>();
         private string[] values = new string[4];
         private string value;
 
-        public bool insert(Trajet trajet)
+        public bool insert(Entities.Trajet trajet)
         {
             // Ajout du trajet
             string rSQL =
                 "INSERT INTO TRAJET (Trajet_Date, Trajet_HeureDepart, Trajet_Commentaire, Trajet_NbPassagers, Vehicule_Id, Utilisateur_Id, Ville_Depart) " +
-                "VALUES ('" + trajet.getDate() + "', '" + trajet.getHeure() + "','" + trajet.getCommentaire() + "','" + trajet.getNbPassagers() + "','" + trajet.getVehicule() + "','" + trajet.getUtilisateur() + "','" + trajet.getVilleDepart() + "')";
+                "VALUES ('" + trajet.getDate() + "', '" + trajet.getHeure() + "','@commentaire','" + trajet.getNbPassagers() + "','" + trajet.getVehicule() + "','" + trajet.getUtilisateur() + "','" + trajet.getVilleDepart() + "')";
 
             SqlCommand ajoutTrajet = new SqlCommand(rSQL, Global.dataBase);
+            ajoutTrajet.CommandText = rSQL;
+            ajoutTrajet.Parameters.AddWithValue("@commentaire", trajet.getCommentaire());
 
             int result = ajoutTrajet.ExecuteNonQuery();
 
@@ -66,7 +68,7 @@ namespace GSBCarpooling.Repositoies
                 return false;
         }
 
-        public bool update(Trajet trajet)
+        public bool update(Entities.Trajet trajet)
         {
             return true;
         }
