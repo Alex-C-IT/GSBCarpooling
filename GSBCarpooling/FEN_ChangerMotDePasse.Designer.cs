@@ -127,6 +127,7 @@
             this.Controls.Add(this.SAI_NouveauMdp);
             this.Controls.Add(this.SAI_AncienMdp);
             this.Name = "FEN_ChangerMotDePasse";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Changement de mot de passe";
             this.Load += new System.EventHandler(this.FEN_ChangerMotDePasse_Load);
             this.ResumeLayout(false);

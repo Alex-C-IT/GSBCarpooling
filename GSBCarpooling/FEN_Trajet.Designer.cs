@@ -36,12 +36,12 @@
             this.BTN_Accepter = new System.Windows.Forms.Button();
             this.BTN_Refuser = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDemande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDemande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomDemande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.TABLE_Participants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TABLE_DemandesEnAttente)).BeginInit();
             this.SuspendLayout();
@@ -133,13 +133,35 @@
             this.button1.Text = "MAP TRAJET";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // idDemande
+            // 
+            this.idDemande.Frozen = true;
+            this.idDemande.HeaderText = "#";
+            this.idDemande.Name = "idDemande";
+            this.idDemande.ReadOnly = true;
+            this.idDemande.Width = 40;
+            // 
+            // nomDemande
+            // 
+            this.nomDemande.Frozen = true;
+            this.nomDemande.HeaderText = "Nom";
+            this.nomDemande.Name = "nomDemande";
+            this.nomDemande.ReadOnly = true;
+            // 
+            // prenomDemande
+            // 
+            this.prenomDemande.Frozen = true;
+            this.prenomDemande.HeaderText = "Prenom";
+            this.prenomDemande.Name = "prenomDemande";
+            this.prenomDemande.ReadOnly = true;
+            // 
             // id
             // 
             this.id.Frozen = true;
             this.id.HeaderText = "#";
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Width = 30;
+            this.id.Width = 40;
             // 
             // Nom
             // 
@@ -150,28 +172,10 @@
             // 
             // Prenom
             // 
+            this.Prenom.Frozen = true;
             this.Prenom.HeaderText = "Prénom";
             this.Prenom.Name = "Prenom";
             this.Prenom.ReadOnly = true;
-            // 
-            // idDemande
-            // 
-            this.idDemande.HeaderText = "#";
-            this.idDemande.Name = "idDemande";
-            this.idDemande.ReadOnly = true;
-            this.idDemande.Width = 30;
-            // 
-            // nomDemande
-            // 
-            this.nomDemande.HeaderText = "Nom";
-            this.nomDemande.Name = "nomDemande";
-            this.nomDemande.ReadOnly = true;
-            // 
-            // prenomDemande
-            // 
-            this.prenomDemande.HeaderText = "Prenom";
-            this.prenomDemande.Name = "prenomDemande";
-            this.prenomDemande.ReadOnly = true;
             // 
             // FEN_Trajet
             // 
@@ -187,6 +191,7 @@
             this.Controls.Add(this.TABLE_Participants);
             this.Controls.Add(this.BTN_Fermer);
             this.Name = "FEN_Trajet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Trajet n°";
             this.Load += new System.EventHandler(this.FEN_Trajet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TABLE_Participants)).EndInit();
