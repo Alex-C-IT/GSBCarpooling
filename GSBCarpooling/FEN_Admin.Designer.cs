@@ -40,9 +40,18 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.BTN_Quitter = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.L_UtilisationVehicule = new System.Windows.Forms.Label();
+            this.CBX_Annees = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TABLE_UtilisationVehicules = new System.Windows.Forms.DataGridView();
+            this.marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modele = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.immatriculation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nbUtilisation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TABLE_UtilisationVehicules)).BeginInit();
             this.SuspendLayout();
             // 
             // L_Welcome
@@ -166,17 +175,90 @@
             this.pictureBox1.Image = global::GSBCarpooling.Properties.Resources.GSB_Logo1;
             this.pictureBox1.ImageLocation = "";
             this.pictureBox1.InitialImage = global::GSBCarpooling.Properties.Resources.GSB_Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(209, 129);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 129);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(355, 309);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // L_UtilisationVehicule
+            // 
+            this.L_UtilisationVehicule.AutoSize = true;
+            this.L_UtilisationVehicule.Location = new System.Drawing.Point(397, 129);
+            this.L_UtilisationVehicule.Name = "L_UtilisationVehicule";
+            this.L_UtilisationVehicule.Size = new System.Drawing.Size(172, 13);
+            this.L_UtilisationVehicule.TabIndex = 4;
+            this.L_UtilisationVehicule.Text = "Utilisation des véhicules de société";
+            // 
+            // CBX_Annees
+            // 
+            this.CBX_Annees.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.CBX_Annees.FormattingEnabled = true;
+            this.CBX_Annees.Items.AddRange(new object[] {
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021"});
+            this.CBX_Annees.Location = new System.Drawing.Point(448, 145);
+            this.CBX_Annees.Name = "CBX_Annees";
+            this.CBX_Annees.Size = new System.Drawing.Size(121, 21);
+            this.CBX_Annees.TabIndex = 5;
+            this.CBX_Annees.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(399, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Années";
+            // 
+            // TABLE_UtilisationVehicules
+            // 
+            this.TABLE_UtilisationVehicules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TABLE_UtilisationVehicules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.marque,
+            this.modele,
+            this.immatriculation,
+            this.nbUtilisation});
+            this.TABLE_UtilisationVehicules.Location = new System.Drawing.Point(405, 177);
+            this.TABLE_UtilisationVehicules.Name = "TABLE_UtilisationVehicules";
+            this.TABLE_UtilisationVehicules.Size = new System.Drawing.Size(385, 260);
+            this.TABLE_UtilisationVehicules.TabIndex = 7;
+            // 
+            // marque
+            // 
+            this.marque.HeaderText = "Marque";
+            this.marque.Name = "marque";
+            // 
+            // modele
+            // 
+            this.modele.HeaderText = "Modèle";
+            this.modele.Name = "modele";
+            // 
+            // immatriculation
+            // 
+            this.immatriculation.HeaderText = "Immatriculation";
+            this.immatriculation.Name = "immatriculation";
+            // 
+            // nbUtilisation
+            // 
+            this.nbUtilisation.HeaderText = "Nombre d\'utilisations";
+            this.nbUtilisation.Name = "nbUtilisation";
             // 
             // FEN_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TABLE_UtilisationVehicules);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CBX_Annees);
+            this.Controls.Add(this.L_UtilisationVehicule);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.L_Welcome);
@@ -191,6 +273,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TABLE_UtilisationVehicules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +293,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton BTN_Quitter;
+        private System.Windows.Forms.Label L_UtilisationVehicule;
+        private System.Windows.Forms.ComboBox CBX_Annees;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView TABLE_UtilisationVehicules;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modele;
+        private System.Windows.Forms.DataGridViewTextBoxColumn immatriculation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nbUtilisation;
     }
 }

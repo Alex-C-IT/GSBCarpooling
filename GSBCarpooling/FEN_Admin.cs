@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,44 @@ namespace GSBCarpooling
         {
             Form gestionTrajet = new FEN_GestionTrajets();
             gestionTrajet.ShowDialog();
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.remplirTableVoitureSelonAnnee(Convert.ToInt16(CBX_Annees.Text));
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+        }
+
+        private void remplirTableVoitureSelonAnnee(int annee)
+        {
+            TABLE_UtilisationVehicules.Rows.Clear();
+
+            string rSql = "SELECT T.Vehicule_Id, Vehicule_Marque, Vehicule_Modele, Vehicule_immatriculation, COUNT(T.Vehicule_Id) " +
+                "FROM VEHICULE V " +
+                "JOIN TRAJET T ON T.Vehicule_Id = V.Vehicule_Id " +
+                "WHERE YEAR(Trajet_Date) = " + annee + " " +
+                "GROUP BY T.Vehicule_Id, Vehicule_Marque, Vehicule_Modele, Vehicule_immatriculation";
+
+            SqlCommand cmd = new SqlCommand(rSql, Global.dataBase);
+            SqlDataReader data = cmd.ExecuteReader();
+            while (data.Read())
+            {
+                var dataRecord = (IDataRecord)data;
+                TABLE_UtilisationVehicules.Rows.Add((string)dataRecord[1], (string)dataRecord[2], (string)dataRecord[3], (int)dataRecord[4]);
+            }
+            this.fermetureRequete(cmd, data);
+        }
+
+        private void fermetureRequete(SqlCommand cmd = null, SqlDataReader data = null)
+        {
+            if(data != null) data.Close();
+            if(cmd != null) cmd.Cancel();
         }
     }
 }
