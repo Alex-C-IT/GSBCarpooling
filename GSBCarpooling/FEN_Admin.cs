@@ -81,6 +81,7 @@ namespace GSBCarpooling
                 "FROM VEHICULE V " +
                 "JOIN TRAJET T ON T.Vehicule_Id = V.Vehicule_Id " +
                 "WHERE YEAR(Trajet_Date) = " + annee + " " +
+                "AND Vehicule_Societe = 1 " +
                 "GROUP BY T.Vehicule_Id, Vehicule_Marque, Vehicule_Modele, Vehicule_immatriculation";
 
             SqlCommand cmd = new SqlCommand(rSql, Global.dataBase);
